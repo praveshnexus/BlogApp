@@ -30,7 +30,7 @@ export class Service {
         }
       );
     } catch (error) {
-        console.log(conf.appwriteCollectionId)
+      console.log(conf.appwriteCollectionId);
       console.log("Appwrite Service :: createPost :: error ", error);
     }
   }
@@ -95,21 +95,20 @@ export class Service {
     }
   }
 
-  async getMyPosts(queries = [Query.equal("userId",userId)]) {
+  async getMyPosts(userId) {
     try {
-      return await this.databases.listDocuments(
+      const queries = [Query.equal("userId", userId)];
+      const response = await this.databases.listDocuments(
         conf.appwriteDatabaseId,
         conf.appwriteCollectionId,
-        queries,
-        []
+        queries
       );
+      return response;
     } catch (error) {
       console.log("Appwrite service :: getMyPosts :: error", error);
       return false;
     }
   }
-
-
 
   // file upload service
 
