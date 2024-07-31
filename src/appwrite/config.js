@@ -95,7 +95,7 @@ export class Service {
     }
   }
 
-  async getMyPosts(queries = [Query.equal("userID",userId)]) {
+  async getMyPosts(queries = [Query.equal("userId",userId)]) {
     try {
       return await this.databases.listDocuments(
         conf.appwriteDatabaseId,
